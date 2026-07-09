@@ -1,0 +1,45 @@
+{
+  "entities": {
+    "Inquiry": {
+      "title": "Inquiry",
+      "description": "Funeral plan booking inquiry details",
+      "type": "object",
+      "properties": {
+        "belief": { "type": "string" },
+        "packageId": { "type": "string" },
+        "selectedOptions": {
+          "type": "array"
+        },
+        "deceasedName": { "type": "string" },
+        "applicantName": { "type": "string" },
+        "applicantPhone": { "type": "string" },
+        "applicantRelation": { "type": "string" },
+        "specialRequests": { "type": "string" },
+        "dateOfPassing": { "type": "string" },
+        "locationOfPassing": { "type": "string" },
+        "deathCertificateFile": { "type": "string" },
+        "funeralHomeStartDate": { "type": "string" },
+        "cateringPortions": { "type": "number" },
+        "coffinDimension": { "type": "string" },
+        "totalCost": { "type": "number" },
+        "createdAt": { "type": "string" }
+      },
+      "required": [
+        "belief",
+        "packageId",
+        "deceasedName",
+        "applicantName",
+        "applicantPhone",
+        "applicantRelation",
+        "coffinDimension",
+        "totalCost"
+      ]
+    }
+  },
+  "firestore": {
+    "/inquiries/{inquiryId}": {
+      "schema": "Inquiry",
+      "description": "Inquiries submitted by customers for funeral service planning"
+    }
+  }
+}

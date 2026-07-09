@@ -1,0 +1,6 @@
+{
+  "name": "RestInCare",
+  "description": "Layanan Perencanaan Pemakaman yang Tenang, Hormat & Profesional (Quiet Elegance)",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-ric-surface: #fbf8fa;
+  --color-ric-surface-dim: #dcd9db;
+  --color-ric-surface-bright: #fbf8fa;
+  --color-ric-lowest: #ffffff;
+  --color-ric-low: #f5f3f4;
+  --color-ric-container: #f0edef;
+  --color-ric-high: #eae7e9;
+  --color-ric-highest: #e4e2e3;
+  --color-ric-charcoal: #1b1b1d;
+  --color-ric-charcoal-muted: #44474c;
+  --color-ric-slate: #333e50;
+  --color-ric-slate-container: #4a5568;
+  --color-ric-slate-light: #becae0;
+  --color-ric-sage: #546258;
+  --color-ric-sage-light: #d5e3d7;
+  --color-ric-sage-dark: #3d4a41;
+  --color-ric-amber: #4b3b1f;
+  --color-ric-amber-light: #dfc6a0;
+  --color-ric-crimson: #ba1a1a;
+  --color-ric-outline: #75777d;
+  --color-ric-outline-variant: #c5c6cd;
+  
+  --font-serif: "Source Serif 4", Georgia, serif;
+  --font-sans: "Hanken Grotesk", sans-serif;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-ric-surface);
+  color: var(--color-ric-charcoal);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+input, select, textarea, button {
+  font-family: var(--font-sans);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+}
+
+/* Modern Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; 
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.5); 
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.8); 
+}
+

@@ -1,0 +1,47 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Global Safety Net: Default Deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Validation Helpers
+    function isValidId(id) { 
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$'); 
+    }
+
+    function isValidInquiry(data) {
+      return data.keys().hasAll([
+        'belief', 'packageId', 'selectedOptions', 'deceasedName', 
+        'applicantName', 'applicantPhone', 'applicantRelation', 
+        'specialRequests', 'dateOfPassing', 'locationOfPassing', 
+        'deathCertificateFile', 'funeralHomeStartDate', 'cateringPortions', 
+        'coffinDimension', 'totalCost', 'createdAt'
+      ]) &&
+      data.keys().size() == 16 &&
+      data.belief is string && data.belief.size() <= 50 &&
+      data.packageId is string && data.packageId.size() <= 50 &&
+      data.selectedOptions is list && data.selectedOptions.size() <= 50 &&
+      data.deceasedName is string && data.deceasedName.size() <= 150 &&
+      data.applicantName is string && data.applicantName.size() <= 150 &&
+      data.applicantPhone is string && data.applicantPhone.size() <= 50 &&
+      data.applicantRelation is string && data.applicantRelation.size() <= 50 &&
+      data.specialRequests is string && data.specialRequests.size() <= 1000 &&
+      data.dateOfPassing is string && data.dateOfPassing.size() <= 50 &&
+      data.locationOfPassing is string && data.locationOfPassing.size() <= 200 &&
+      data.deathCertificateFile is string && data.deathCertificateFile.size() <= 150 &&
+      data.funeralHomeStartDate is string && data.funeralHomeStartDate.size() <= 50 &&
+      data.cateringPortions is int &&
+      data.coffinDimension is string && data.coffinDimension.size() <= 50 &&
+      (data.totalCost is int || data.totalCost is float);
+    }
+
+    // Inquiries Collection rules
+    match /inquiries/{inquiryId} {
+      allow create: if isValidId(inquiryId) && isValidInquiry(request.resource.data);
+      allow read, update, delete: if false;
+    }
+  }
+}
