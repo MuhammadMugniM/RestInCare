@@ -95,16 +95,19 @@ export default function App() {
 
   return (
     <div 
-      className="min-h-screen text-[#1b1b1d] font-sans flex flex-col justify-between" 
+      className="min-h-[100dvh] text-[#1b1b1d] font-sans flex flex-col justify-between relative" 
       id="rest_in_care_app_root"
-      style={{
-        backgroundImage: `url('/BG%20Website%20RIC.jpeg')`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        backgroundAttachment: 'fixed'
-      }}
     >
+      {/* Fixed Background Image to prevent iOS Safari bugs and scroll stretching */}
+      <div 
+        className="fixed inset-0 z-[-1]"
+        style={{
+          backgroundImage: `url('/BG%20Website%20RIC.jpeg')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      />
       
       {/* Respectful Navigation Bar */}
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out print:hidden ${isScrolled ? 'bg-white/70 backdrop-blur-md shadow-md text-slate-800' : 'bg-white/50 backdrop-blur-md border-b border-white/20 text-slate-800'}`}>
